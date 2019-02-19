@@ -1,13 +1,13 @@
 import React from "react";
-import Head from "next/head";
+// import Head from "next/head";
 import Navbar from "../Navbar/index";
 
 const Layout = ({ children }) => {
   return (
     <React.Fragment>
-      <Head>
+      {/* <Head>
         <title>Hello World</title>
-      </Head>
+      </Head> */}
       <div>
         <Navbar />
         <div>{children}</div>
