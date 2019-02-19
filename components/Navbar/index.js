@@ -16,9 +16,8 @@ class Navbar extends Component {
             <a title="Our API">Home</a>
           </Link>
           <Link href="/about">
-            <a title="About Next JS">About Next JS</a>
+            <a title="About">About</a>
           </Link>
-          <mark className="badge">Hello!</mark>
         </div>
       </nav>
     );

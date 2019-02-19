@@ -1,6 +1,8 @@
+import Layout from "../components/Layout/Layout";
+
 const About = () => (
-  <section className="page-section">
-    <h1>About Next JS</h1>
+  <Layout>
+    <h3>About page</h3>
     <p>
       <span>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti et eos
@@ -20,7 +22,7 @@ const About = () => (
         similique perspiciatis nulla ullam, voluptatibus praesentium?
       </span>
     </p>
-  </section>
+  </Layout>
 );
 
 export default About;
