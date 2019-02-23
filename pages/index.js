@@ -4,7 +4,7 @@ import "../scss/style.scss";
 // const axios = require("axios");
 
 const Index = ({ todos }) => (
-  <Layout>
+  <Layout title="Main page">
     <main>
       <h3>Home page for listing todos</h3>
       {console.log(todos, "fetch props on main page")}
