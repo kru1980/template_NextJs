@@ -10,25 +10,29 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^0.1.2",
+    "antd": "^3.13.5",
     "autoprefixer": "^8.3.0",
     "axios": "^0.18.0",
+    "babel-plugin-import": "^1.11.0",
     "babel-plugin-module-resolver": "^3.1.1",
     "babel-plugin-wrap-in-js": "^1.1.1",
     "express": "^4.16.3",
     "isomorphic-unfetch": "^3.0.0",
-    "next": "^5.1.0",
+    "next": "^8.0.3",
     "next-redux-wrapper": "^3.0.0-alpha.1",
     "node-sass": "^4.8.3",
     "postcss-easy-import": "^3.0.0",
     "postcss-loader": "^2.1.4",
     "raw-loader": "^0.5.1",
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "sass-loader": "^7.0.1",
     "tailwindcss": "^0.5.2"
-  }
+  },
+  "devDependencies": {}
 }

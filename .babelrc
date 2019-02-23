@@ -6,6 +6,7 @@
         "root": ["."],
         "alias": {
           "styles": "scss/"
+          
         },
         "cwd": "babelrc"
       }
@@ -14,6 +15,13 @@
       "wrap-in-js",
       {
         "extensions": ["css$", "scss$"]
+      }
+    ],
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "style": "css"
       }
     ]
   ],

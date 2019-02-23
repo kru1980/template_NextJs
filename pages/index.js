@@ -1,6 +1,6 @@
 import fetch from "isomorphic-unfetch";
 import Layout from "../components/Layout/Layout";
-import "../scss/style.scss";
+import "../css/style.css";
 // const axios = require("axios");
 
 const Index = ({ todos }) => (
