@@ -1,22 +1,22 @@
 {
   "plugins": [
-    [
-      "module-resolver",
-      {
-        "root": ["."],
-        "alias": {
-          "styles": "scss/"
+    // [
+    //   "module-resolver",
+    //   {
+    //     "root": ["."],
+    //     "alias": {
+    //       "styles": "scss/"
           
-        },
-        "cwd": "babelrc"
-      }
-    ],
-    [
-      "wrap-in-js",
-      {
-        "extensions": ["css$", "scss$"]
-      }
-    ],
+    //     },
+    //     "cwd": "babelrc"
+    //   }
+    // ],
+    // [
+    //   "wrap-in-js",
+    //   {
+    //     "extensions": ["css$", "scss$"]
+    //   }
+    // ],
     [
       "import",
       {

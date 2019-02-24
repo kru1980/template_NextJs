@@ -1,12 +1,9 @@
 import Layout from "../components/Layout/Layout";
-import { Button } from "antd";
 
-const About = () => (
-  <Layout title="About page">
-    <h3>About page</h3>
-    <Button size="large" style={{ marginLeft: 8 }}>
-      Cancel
-    </Button>
+const Profile = () => (
+  <Layout title="Profile page">
+    <h3>Profile page</h3>
+
     <p>
       <span>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti et eos
@@ -29,4 +26,4 @@ const About = () => (
   </Layout>
 );
 
-export default About;
+export default Profile;
