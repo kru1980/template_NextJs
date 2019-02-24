@@ -3,7 +3,7 @@ import { withRouter } from "next/router";
 import Layout from "../components/Layout/Layout";
 
 const Todo = props => (
-  <Layout>
+  <Layout title={props.router.query.title}>
     <div>
       single todo page
       <h1>{props.router.query.title}</h1>
