@@ -4,6 +4,8 @@ import "../css/style.css";
 import { List, Card, Row, Col } from "antd";
 import PostLink from "../components/PostLink ";
 
+import HorizontalLoginForm from "../components/Form/HorizontalLoginForm";
+
 const Index = ({ todos }) => (
   <Layout title="Main page">
     <Row>
@@ -40,6 +42,11 @@ const Index = ({ todos }) => (
               style={{ maxWidth: "100%" }}
             />
           </div>
+        </div>
+      </Col>
+      <Col offset={1} sm={23} md={5}>
+        <div>
+          <HorizontalLoginForm />
         </div>
       </Col>
     </Row>
