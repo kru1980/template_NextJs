@@ -1,6 +1,6 @@
 import Layout from "../components/Layout/Layout";
 
-const Profile = () => (
+const Profile = props => (
   <Layout title="Profile page">
     <h3>Profile page</h3>
 
