@@ -1,21 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import TemplateContext from "./templateContext";
+import { todoReducer, ADD_TODO, DELETE_TODO, FETCH_TODOS } from "./reducers";
 
 const GlobalState = props => {
   /* eslint-disable */
-  const [todos, setTodos] = useState([]);
-  // const [todos, setTodos] = useState([{ id: "111", title: "hi" }]);
+  // const [todos, setTodos] = useState([]);
   const [cart, setCart] = useState(null);
+  // const [cartState, dispatch] = useReducer(todoReducer, { cart: [] });
+  const [todosState, dispatch] = useReducer(todoReducer, {
+    todos: [{ id: "33", title: "hhh" }]
+  });
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch("http://localhost:3000/api/todos")
       .then(res => res.json())
       .then(todos => {
+        // setTodos(todos);
         // console.log("fetch todos glpbalstate", todos);
-        setTodos(todos);
+        dispatch({ type: FETCH_TODOS, payload: todos });
         setIsLoading(false);
       })
+
       .catch(error => {
         console.log(error);
       });
@@ -23,22 +29,23 @@ const GlobalState = props => {
 
   /* eslint-enable */
 
-  const addProductToCart = todo => {
+  const addTodoToCart = todo => {
     console.log("Adding todo", todo);
-    // пишем функцию обработчик, обновляем состояние
+    // dispatch({ type: ADD_TODO, todo: todo });
   };
 
-  const removeProductFromCart = todoId => {
-    console.log("Removing todo with id: " + todoId);
+  const removeTodoFromCart = todoId => {
+    // console.log("Removing todo with id: " + todoId);
+    dispatch({ type: DELETE_TODO, todoId: todoId });
   };
 
   return (
     <TemplateContext.Provider
       value={{
-        todos: todos,
+        todos: todosState,
         cart: cart,
-        addProductToCart: addProductToCart,
-        removeProductFromCart: removeProductFromCart,
+        addTodoToCart: addTodoToCart,
+        removeTodoFromCart: removeTodoFromCart,
         isLoading: isLoading
       }}
     >

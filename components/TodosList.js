@@ -1,6 +1,6 @@
 import React from "react";
 import TemplateContext from "../context/templateContext";
-import { List, Card } from "antd";
+import { List, Card, Button, Icon } from "antd";
 import PostLink from "./PostLink ";
 
 const TodosList = props => {
@@ -8,6 +8,7 @@ const TodosList = props => {
     <TemplateContext.Consumer>
       {context => (
         <React.Fragment>
+          {/* {console.log(context)} */}
           {context.todos.todos ? (
             <List
               grid={{
@@ -24,6 +25,18 @@ const TodosList = props => {
                     extra={<PostLink title={item.title} />}
                   >
                     Card content
+                    <Button
+                      type="danger"
+                      onClick={context.removeTodoFromCart.bind(this, item.id)}
+                    >
+                      <Icon type="delete" />
+                    </Button>
+                    {/* <Button
+                      type="primary"
+                      onClick={context.addTodoToCart.bind(this, item)}
+                    >
+                      <Icon type="shopping-cart" />
+                    </Button> */}
                   </Card>
                 </List.Item>
               )}
