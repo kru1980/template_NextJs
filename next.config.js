@@ -40,6 +40,17 @@
 // const withSass = require("@zeit/next-sass");
 // module.exports = withSass();
 
+module.exports = {
+  webpack: config => {
+    config.plugins.push(
+      new FilterWarningsPlugin({
+        exclude: /mini-css-extract-plugin[^]*Conflicting order between:/
+      })
+    );
+    return config;
+  }
+};
+
 // подключение ант дизайна
 /* eslint-disable */
 const withCss = require("@zeit/next-css");
