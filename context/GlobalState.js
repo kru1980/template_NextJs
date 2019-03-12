@@ -8,7 +8,7 @@ const GlobalState = props => {
   const [cart, setCart] = useState(null);
   // const [cartState, dispatch] = useReducer(todoReducer, { cart: [] });
   const [todosState, dispatch] = useReducer(todoReducer, {
-    todos: [{ id: "33", title: "hhh" }]
+    todos: [{ id: "33", title: "hhh", completed: false }]
   });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -29,14 +29,15 @@ const GlobalState = props => {
 
   /* eslint-enable */
 
-  const addTodoToCart = todo => {
+  const addTodoToStore = todo => {
     console.log("Adding todo", todo);
-    // dispatch({ type: ADD_TODO, todo: todo });
+    dispatch({ type: ADD_TODO, todo: todo });
   };
 
-  const removeTodoFromCart = todoId => {
-    // console.log("Removing todo with id: " + todoId);
-    dispatch({ type: DELETE_TODO, todoId: todoId });
+  // console.log("todosState", todosState);
+
+  const removeTodoFromStore = todoId => {
+    dispatch({ type: DELETE_TODO, payload: todoId });
   };
 
   return (
@@ -44,8 +45,8 @@ const GlobalState = props => {
       value={{
         todos: todosState,
         cart: cart,
-        addTodoToCart: addTodoToCart,
-        removeTodoFromCart: removeTodoFromCart,
+        addTodoToStore: addTodoToStore,
+        removeTodoFromCart: removeTodoFromStore,
         isLoading: isLoading
       }}
     >

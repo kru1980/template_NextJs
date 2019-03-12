@@ -1,38 +1,28 @@
+// const R = require("ramda");
+import * as R from "ramda";
+const uuidv4 = require("uuid/v4");
 export const ADD_TODO = "ADD_TODO";
 export const DELETE_TODO = "DELETE_TODO";
 export const FETCH_TODOS = "FETCH_TODO";
 
-const addTodoToCart = (product, state) => {
-  const updatedCart = [...state.cart];
-  const updatedItemIndex = updatedCart.findIndex(item => item.id === todo.id);
+const addTodoToStore = (todo, todoState) => {
+  const prevState = [...todoState.todos];
+  const updatedTodo = { ...todo };
+  console.log("updatedTodo", updatedTodo);
+  const updatedState = R.append(updatedTodo, prevState);
+  console.log("updatedState", updatedState);
 
-  if (updatedItemIndex < 0) {
-    updatedCart.push({ ...product, quantity: 1 });
-  } else {
-    const updatedItem = {
-      ...updatedCart[updatedItemIndex]
-    };
-    updatedItem.quantity++;
-    updatedCart[updatedItemIndex] = updatedItem;
-  }
-  return { ...state, cart: updatedCart };
+  return { todos: prevState };
 };
 
-const removeTodoFromCart = (todoId, state) => {
-  // console.log("Removing product with id: " + todoId);
-  const updatedTodo = [...state.todos];
-  const updatedItemIndex = updatedTodo.findIndex(item => item.id === todoId);
+const removeTodoFromStore = (todoId, todoState) => {
+  const prevState = [...todoState.todos];
+  const findTodoRemoveIndex = R.findIndex(R.where({ id: R.equals(todoId) }))(
+    prevState
+  );
+  const updatedState = R.remove(findTodoRemoveIndex, 1, prevState);
 
-  // const updatedItem = {
-  //   ...updatedTodo[updatedItemIndex]
-  // };
-  // updatedItem.quantity--;
-  // if (updatedItem.quantity <= 0) {
-  //   updatedTodo.splice(updatedItemIndex, 1);
-  // } else {
-  //   updatedTodo[updatedItemIndex] = updatedItem;
-  // }
-  return { ...state, todo: updatedTodo };
+  return { todos: updatedState };
 };
 
 export const todoReducer = (state, action) => {
@@ -41,9 +31,9 @@ export const todoReducer = (state, action) => {
       const newState = state.todos.concat(...action.payload.todos);
       return { todos: newState };
     case ADD_TODO:
-      return addTodoToCart(action.todo, state);
+      return addTodoToStore(action.todo, state);
     case DELETE_TODO:
-      return removeTodoFromCart(action.todoId, state);
+      return removeTodoFromStore(action.payload, state);
     default:
       return state;
   }

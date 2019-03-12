@@ -28,6 +28,7 @@
     "node-sass": "^4.8.3",
     "postcss-easy-import": "^3.0.0",
     "postcss-loader": "^2.1.4",
+    "ramda": "^0.26.1",
     "raw-loader": "^0.5.1",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
@@ -35,7 +36,8 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "sass-loader": "^7.0.1",
-    "tailwindcss": "^0.7.4"
+    "tailwindcss": "^0.7.4",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "nodemon": "^1.18.10"

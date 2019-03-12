@@ -4,6 +4,7 @@ import "../css/style.css";
 import { Row, Col } from "antd";
 import TodosList from "../components/TodosList";
 import HorizontalLoginForm from "../components/Form/HorizontalLoginForm";
+import TemplateContext from "../context/templateContext";
 
 const Index = ({ todos }, props) => (
   <Layout title="Main page">
@@ -26,7 +27,11 @@ const Index = ({ todos }, props) => (
       </Col>
       <Col offset={1} sm={23} md={5}>
         <div>
-          <HorizontalLoginForm />
+          <TemplateContext.Consumer>
+            {context => (
+              <HorizontalLoginForm addTodoToStore={context.addTodoToStore} />
+            )}
+          </TemplateContext.Consumer>
         </div>
       </Col>
     </Row>

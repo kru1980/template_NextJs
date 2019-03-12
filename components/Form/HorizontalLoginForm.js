@@ -17,10 +17,12 @@ class HorizontalLoginForm extends React.Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log("Received values of form: ", values);
+        this.props.addTodoToStore(values);
         axios
           .post("/api/todos", { title: values })
           .then(function(response) {
             console.log(response);
+            // сделаем добавление в контекст,но обработку нового тодо делать надо на сервере
           })
           .then(() => this.setState({ title: "" }))
           .catch(function(error) {
