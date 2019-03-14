@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, Icon, Input, Button } from "antd";
+const uuidv4 = require("uuid/v4");
 import axios from "axios";
 
 function hasErrors(fieldsError) {
@@ -17,12 +18,17 @@ class HorizontalLoginForm extends React.Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log("Received values of form: ", values);
-        this.props.addTodoToStore(values);
+        // создаем данные для сервера и контекста
+        const addTodo = {
+          id: uuidv4(),
+          completed: false,
+          title: values.todoTitle
+        };
+        this.props.addTodoToStore(addTodo);
         axios
-          .post("/api/todos", { title: values })
+          .post("/api/todos", { todo: addTodo })
           .then(function(response) {
             console.log(response);
-            // сделаем добавление в контекст,но обработку нового тодо делать надо на сервере
           })
           .then(() => this.setState({ title: "" }))
           .catch(function(error) {

@@ -4,21 +4,22 @@ import { todoReducer, ADD_TODO, DELETE_TODO, FETCH_TODOS } from "./reducers";
 
 const GlobalState = props => {
   /* eslint-disable */
-  // const [todos, setTodos] = useState([]);
+  const [todosState, setTodosState] = useState([]);
   const [cart, setCart] = useState(null);
   // const [cartState, dispatch] = useReducer(todoReducer, { cart: [] });
-  const [todosState, dispatch] = useReducer(todoReducer, {
-    todos: [{ id: "33", title: "hhh", completed: false }]
-  });
+  // const [todosState, dispatch] = useReducer(todoReducer, {
+  //   todos: [{ id: "33", title: "hhh", completed: false }]
+  // });
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch("http://localhost:3000/api/todos")
       .then(res => res.json())
       .then(todos => {
-        // setTodos(todos);
+        setTodosState(todos);
         // console.log("fetch todos glpbalstate", todos);
-        dispatch({ type: FETCH_TODOS, payload: todos });
+        // dispatch({ type: FETCH_TODOS, payload: todos });
+
         setIsLoading(false);
       })
 
@@ -30,11 +31,11 @@ const GlobalState = props => {
   /* eslint-enable */
 
   const addTodoToStore = todo => {
-    console.log("Adding todo", todo);
-    dispatch({ type: ADD_TODO, todo: todo });
+    console.log("go to server new todo", todo);
+    // // dispatch({ type: ADD_TODO, todo: todo });
+    setTodosState(todo);
+    setIsLoading(false);
   };
-
-  // console.log("todosState", todosState);
 
   const removeTodoFromStore = todoId => {
     dispatch({ type: DELETE_TODO, payload: todoId });

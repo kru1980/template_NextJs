@@ -1,6 +1,4 @@
-// const R = require("ramda");
 import * as R from "ramda";
-const uuidv4 = require("uuid/v4");
 export const ADD_TODO = "ADD_TODO";
 export const DELETE_TODO = "DELETE_TODO";
 export const FETCH_TODOS = "FETCH_TODO";

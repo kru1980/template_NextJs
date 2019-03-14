@@ -6,7 +6,8 @@ const PORT = process.env.PORT || 3000;
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
-let nextId = 5;
+// const todosState = require("./api/todos.json");
+// console.log("atate todos", todos);
 app
   .prepare()
   .then(() => {
@@ -20,12 +21,10 @@ app
 
     server.post("/api/todos", (req, res) => {
       const todos = [];
-      const todo = {
-        id: nextId++,
-        title: req.body.title,
-        completed: false
-      };
-      todos.push(todo);
+      console.log("atate todos", todos);
+
+      const updateTodo = req.body.todo;
+      todos.push(updateTodo);
       console.log("from req", req.body.title);
 
       res.send(todos);

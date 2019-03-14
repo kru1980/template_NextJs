@@ -26,13 +26,14 @@ const Index = ({ todos }, props) => (
         </div>
       </Col>
       <Col offset={1} sm={23} md={5}>
-        <div>
-          <TemplateContext.Consumer>
-            {context => (
-              <HorizontalLoginForm addTodoToStore={context.addTodoToStore} />
-            )}
-          </TemplateContext.Consumer>
-        </div>
+        {/* <div> */}
+
+        <TemplateContext.Consumer>
+          {context => (
+            <HorizontalLoginForm addTodoToStore={context.addTodoToStore} />
+          )}
+        </TemplateContext.Consumer>
+        {/* </div> */}
       </Col>
     </Row>
   </Layout>
