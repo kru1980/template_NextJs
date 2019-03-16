@@ -4,35 +4,32 @@ export const DELETE_TODO = "DELETE_TODO";
 export const FETCH_TODOS = "FETCH_TODO";
 
 const addTodoToStore = (todo, todoState) => {
-  const prevState = [...todoState.todos];
+  const prevState = [...todoState];
   const updatedTodo = { ...todo };
-  console.log("updatedTodo", updatedTodo);
+  // console.log("updatedTodo", updatedTodo);
   const updatedState = R.append(updatedTodo, prevState);
-  console.log("updatedState", updatedState);
-
-  return { todos: prevState };
+  // console.log("updatedState", updatedState);
+  return updatedState;
 };
 
-const removeTodoFromStore = (todoId, todoState) => {
-  const prevState = [...todoState.todos];
+const removeTodoFromStore = (todoId, todosState) => {
+  const prevState = [...todosState];
   const findTodoRemoveIndex = R.findIndex(R.where({ id: R.equals(todoId) }))(
     prevState
   );
   const updatedState = R.remove(findTodoRemoveIndex, 1, prevState);
-
-  return { todos: updatedState };
+  return updatedState;
 };
 
-export const todoReducer = (state, action) => {
+export const todoReducer = (todosState, action) => {
   switch (action.type) {
     case FETCH_TODOS:
-      const newState = state.todos.concat(...action.payload.todos);
-      return { todos: newState };
+      return R.concat(todosState, action.payload);
     case ADD_TODO:
-      return addTodoToStore(action.todo, state);
+      return addTodoToStore(action.payload, todosState);
     case DELETE_TODO:
-      return removeTodoFromStore(action.payload, state);
+      return removeTodoFromStore(action.payload, todosState);
     default:
-      return state;
+      return todosState;
   }
 };

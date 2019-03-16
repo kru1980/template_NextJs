@@ -17,7 +17,7 @@ class HorizontalLoginForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log("Received values of form: ", values);
+        // console.log("Received values of form: ", values);
         // создаем данные для сервера и контекста
         const addTodo = {
           id: uuidv4(),
@@ -25,15 +25,15 @@ class HorizontalLoginForm extends React.Component {
           title: values.todoTitle
         };
         this.props.addTodoToStore(addTodo);
-        axios
-          .post("/api/todos", { todo: addTodo })
-          .then(function(response) {
-            console.log(response);
-          })
-          .then(() => this.setState({ title: "" }))
-          .catch(function(error) {
-            console.log(error);
-          });
+        // axios
+        //   .post("/api/todos", { todo: addTodo })
+        //   .then(function(response) {
+        //     console.log(response);
+        //   })
+        //   .then(() => this.setState({ title: "" }))
+        //   .catch(function(error) {
+        //     console.log(error);
+        //   });
 
         this.props.form.resetFields();
         this.props.form.validateFields();
