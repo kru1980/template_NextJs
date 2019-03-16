@@ -8,8 +8,9 @@ const TodosList = props => {
     <TemplateContext.Consumer>
       {context => (
         <React.Fragment>
-          {/* {console.log(context)} */}
-          {context.todos.todos ? (
+          {console.log("context", context)}
+          {console.log("context-todos", context.todos[0])}
+          {context.todos ? (
             <List
               grid={{
                 gutter: 16,
@@ -17,7 +18,7 @@ const TodosList = props => {
                 sm: 2,
                 md: 3
               }}
-              dataSource={context.todos.todos}
+              dataSource={context.todos}
               renderItem={item => (
                 <List.Item>
                   <Card
